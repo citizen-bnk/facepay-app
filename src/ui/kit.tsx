@@ -353,7 +353,7 @@ export function Pill({ label, active, onPress, segmented }: { label: string; act
       accessibilityRole="button"
       accessibilityState={{ selected: !!active }}
       onPress={onPress}
-      style={[s.pill, active && { backgroundColor: colors.gold, borderColor: colors.gold }, segmented && { flex: 1, marginRight: 0, borderWidth: 0, backgroundColor: active ? colors.gold : 'transparent' }]}
+      style={[s.pill, active && { backgroundColor: colors.white, borderColor: colors.white }, segmented && { flex: 1, marginRight: 0, borderWidth: 0, backgroundColor: active ? colors.white : 'transparent' }]}
     >
       <T w="semibold" size={12} numberOfLines={1} color={active ? colors.black : colors.muted}>
         {label}

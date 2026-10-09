@@ -1,5 +1,5 @@
 import React from 'react';
-import { Pressable, View } from 'react-native';
+import { ImageBackground, Pressable, View } from 'react-native';
 import { useRouter } from 'expo-router';
 import { Ionicons } from '@expo/vector-icons';
 import { LinearGradient } from 'expo-linear-gradient';
@@ -24,21 +24,7 @@ export default function Onboarding() {
       <T size={14} color={lightSub} style={{ marginTop: 12, lineHeight: 21, maxWidth: 300 }}>
         A faster, safer and more connected way to pay across all your favorite places.
       </T>
-      <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-        <View style={{ width: 190, height: 330, borderRadius: 34, backgroundColor: '#0B1226', borderWidth: 4, borderColor: '#1B2440', alignItems: 'center', justifyContent: 'center', transform: [{ rotate: '-8deg' }], shadowColor: colors.gold, shadowOpacity: 0.35, shadowRadius: 30 }}>
-          <Mark size={104} />
-          <T w="extrabold" size={20} color={colors.white} style={{ marginTop: 8 }}>
-            FACE<T w="extrabold" size={20} color={colors.gold}>PAY</T>
-          </T>
-          <T size={7} color={colors.muted} style={{ letterSpacing: 3, marginTop: 4 }}>
-            FACE YOUR MONEY
-          </T>
-          <View style={{ position: 'absolute', bottom: 22, flexDirection: 'row', alignItems: 'center' }}>
-            <Ionicons name="shield-checkmark" size={14} color={colors.gold} />
-            <T size={9} color={colors.muted} style={{ marginLeft: 6 }}>Secure face authentication</T>
-          </View>
-        </View>
-      </View>
+      <ImageBackground source={require('../assets/media/hero.webp')} style={{flex:1,marginHorizontal:-24,marginTop:20}} imageStyle={{resizeMode:'cover',borderRadius:16}}><View style={{position:'absolute',top:0,left:0,right:0,height:30,backgroundColor:'rgba(255,255,255,.7)'}}/></ImageBackground>
       <View style={{ flexDirection: 'row', justifyContent: 'center', marginBottom: 18 }}>
         {[0, 1, 2].map((i) => (
           <View key={i} style={{ width: i === 0 ? 20 : 7, height: 7, borderRadius: 4, marginHorizontal: 3, backgroundColor: i === 0 ? colors.gold : '#D8DBE3' }} />

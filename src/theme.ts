@@ -1,12 +1,12 @@
 export const colors = {
-  bg: '#081020',
-  black: '#050810',
-  surface: '#0D1730',
-  surfaceAlt: '#111E3B',
+  bg: '#06111A',
+  black: '#030B12',
+  surface: '#11212B',
+  surfaceAlt: '#1B2A34',
   border: 'rgba(255,255,255,0.09)',
-  gold: '#D4A53A',
-  goldLight: '#F2CE6B',
-  goldDark: '#B8862B',
+  gold: '#E9B550',
+  goldLight: '#FFDF95',
+  goldDark: '#BE842B',
   white: '#FFFFFF',
   text: '#FFFFFF',
   muted: '#8E98AD',
@@ -18,8 +18,8 @@ export const colors = {
 };
 
 export const gradients = {
-  gold: ['#F2CE6B', '#D4A53A', '#B8862B'] as const,
-  card: ['#1A2547', '#0B1228', '#050810'] as const,
+  gold: ['#FFE4A7', '#EDBC62', '#D6A03D'] as const,
+  card: ['#162C44', '#091520', '#030B12'] as const,
 };
 
 export const fonts = {

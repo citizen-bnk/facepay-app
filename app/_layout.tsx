@@ -17,7 +17,7 @@ import { colors } from '../src/theme';
 
 SplashScreen.preventAutoHideAsync().catch(() => undefined);
 
-const PUBLIC = ['splash', 'onboarding', 'login'];
+const PUBLIC = ['splash', 'onboarding', 'login', 'device'];
 
 function Guard({ children }: { children: React.ReactNode }) {
   const { ready, signedIn } = useApp();
@@ -48,11 +48,11 @@ export default function RootLayout() {
   return (
     <SafeAreaProvider>
       <AppProvider>
-        <View style={{ flex: 1, backgroundColor: colors.black }}>
+        <View style={{ flex: 1, backgroundColor: Platform.OS === 'web' ? '#F8F6EE' : colors.black }}>
           <View
             style={[
               { flex: 1, width: '100%', backgroundColor: colors.bg },
-              Platform.OS === 'web' ? { maxWidth: 480, alignSelf: 'center' } : null,
+              Platform.OS === 'web' ? { maxWidth: 420, alignSelf: 'center', overflow:'hidden', borderRadius:28, borderWidth:3, borderColor:'#22282D', boxShadow:'0 14px 48px rgba(25,20,9,.18)' } : null,
             ]}
           >
             <StatusBar style="light" />

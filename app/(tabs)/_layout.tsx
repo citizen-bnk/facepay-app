@@ -18,8 +18,8 @@ export default function TabsLayout() {
         tabBarActiveTintColor: colors.gold,
         tabBarInactiveTintColor: '#7C86A0',
         tabBarStyle: {
-          backgroundColor: '#060B18',
-          borderTopColor: colors.border,
+          backgroundColor: '#FFFFFF',
+          borderTopColor: '#E6E8EB',
           borderTopWidth: 1,
           height: Platform.OS === 'web' ? 64 : undefined,
           paddingTop: 6,
@@ -33,11 +33,11 @@ export default function TabsLayout() {
       <Tabs.Screen
         name="pay"
         options={{
-          title: 'Pay',
+          title: 'Scan',
           tabBarIcon: ({ focused }) => (
             <LinearGradient
               colors={gradients.gold}
-              style={{ width: 40, height: 40, borderRadius: 20, alignItems: 'center', justifyContent: 'center', marginTop: -4, opacity: focused ? 1 : 0.9 }}
+              style={{ width: 32, height: 32, borderRadius: 16, alignItems: 'center', justifyContent: 'center', opacity: focused ? 1 : 0.9 }}
             >
               <Ionicons name="scan" size={21} color={colors.black} />
             </LinearGradient>

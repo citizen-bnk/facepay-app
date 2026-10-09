@@ -11,7 +11,7 @@ export default function Root({ children }: PropsWithChildren) {
         <meta name="theme-color" content="#081020" />
         <meta name="description" content="FacePay: face your money. Pay with just your face, QR or tap." />
         <ScrollViewStyleReset />
-        <style dangerouslySetInnerHTML={{ __html: 'html,body{background:#050810;} body{overflow:hidden;}' }} />
+        <style dangerouslySetInnerHTML={{ __html: 'html,body{background:#f8f6ee;}body{overflow:hidden;}@media(min-width:600px){#root{padding:20px 0;background:radial-gradient(ellipse at 50% 70%,#e5d5b2,#f8f6ee 70%);}}' }} />
       </head>
       <body>{children}</body>
     </html>
