@@ -24,7 +24,7 @@ export default function Onboarding() {
       <T size={14} color={lightSub} style={{ marginTop: 12, lineHeight: 21, maxWidth: 300 }}>
         A faster, safer and more connected way to pay across all your favorite places.
       </T>
-      <ImageBackground source={require('../assets/media/hero.webp')} style={{flex:1,marginHorizontal:-24,marginTop:20}} imageStyle={{resizeMode:'cover',borderRadius:16}}><View style={{position:'absolute',top:0,left:0,right:0,height:30,backgroundColor:'rgba(255,255,255,.7)'}}/></ImageBackground>
+      <ImageBackground source={require('../assets/media/hero.webp')} style={{flex:1,marginHorizontal:-24,marginTop:20}} imageStyle={{width:'100%',height:'100%',resizeMode:'cover',borderRadius:16}} />
       <View style={{ flexDirection: 'row', justifyContent: 'center', marginBottom: 18 }}>
         {[0, 1, 2].map((i) => (
           <View key={i} style={{ width: i === 0 ? 20 : 7, height: 7, borderRadius: 4, marginHorizontal: 3, backgroundColor: i === 0 ? colors.gold : '#D8DBE3' }} />
