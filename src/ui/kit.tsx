@@ -152,8 +152,8 @@ export function OutlineButton({
 }
 
 const LightCtx = createContext(false);
-export const lightText = '#0B1226';
-export const lightSub = '#6B7280';
+export const lightText = '#0B0B0B';
+export const lightSub = '#5F6673';
 
 export function Card({ children, style, light = false }: { children: React.ReactNode; style?: StyleProp<ViewStyle>; light?: boolean }) {
   return (
@@ -195,7 +195,7 @@ export function Logo({ width = 180 }: { width?: number }) {
     <Image
       accessibilityLabel="FacePay"
       source={require('../../assets/logo-full.png')}
-      style={{ width, height: (width * 260) / 1130 }}
+      style={{ width, height: (width * 488) / 2576 }}
       resizeMode="contain"
     />
   );

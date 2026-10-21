@@ -6,9 +6,9 @@ const config: ExpoConfig = {
   scheme: 'facepay',
   version: '1.0.0',
   orientation: 'portrait',
-  icon: './assets/icon-1024.png',
+  icon: './assets/facepay_app_icon_dark.png',
   userInterfaceStyle: 'dark',
-  backgroundColor: '#081020',
+  backgroundColor: '#0B0B0B',
   ios: {
     bundleIdentifier: 'com.facepay.app',
     supportsTablet: false,
@@ -21,24 +21,24 @@ const config: ExpoConfig = {
   android: {
     package: 'com.facepay.app',
     adaptiveIcon: {
-      foregroundImage: './assets/adaptive-foreground.png',
-      backgroundColor: '#081020',
+      foregroundImage: './assets/facepay_mark.png',
+      backgroundColor: '#0B0B0B',
     },
     permissions: ['CAMERA'],
   },
   web: {
     bundler: 'metro',
     output: 'single',
-    favicon: './assets/favicon.png',
+    favicon: './assets/facepay_app_icon_dark.png',
     name: 'FacePay',
     shortName: 'FacePay',
-    backgroundColor: '#081020',
-    themeColor: '#081020',
+    backgroundColor: '#0B0B0B',
+    themeColor: '#0B0B0B',
   },
   plugins: [
     'expo-router',
     'expo-font',
-    ['expo-splash-screen', { image: './assets/splash-icon.png', imageWidth: 200, resizeMode: 'contain', backgroundColor: '#081020' }],
+    ['expo-splash-screen', { image: './assets/facepay_mark.png', imageWidth: 200, resizeMode: 'contain', backgroundColor: '#0B0B0B' }],
     'expo-secure-store',
     [
       'expo-camera',
