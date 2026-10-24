@@ -128,8 +128,10 @@ export function OutlineButton({
   style,
   icon,
   tone = 'default',
+  disabled = false,
 }: {
   label: string;
+  disabled?: boolean;
   onPress?: () => void;
   style?: StyleProp<ViewStyle>;
   icon?: keyof typeof Ionicons.glyphMap;
@@ -140,8 +142,10 @@ export function OutlineButton({
     <Pressable
       accessibilityRole="button"
       accessibilityLabel={label}
+      accessibilityState={{ disabled }}
+      disabled={disabled}
       onPress={onPress}
-      style={({ pressed }) => [s.outlineBtn, { borderColor: tone === 'default' ? colors.border : c, opacity: pressed ? 0.8 : 1 }, style]}
+      style={({ pressed }) => [s.outlineBtn, { borderColor: tone === 'default' ? colors.border : c, opacity: disabled ? 0.45 : pressed ? 0.8 : 1 }, style]}
     >
       {icon && <Ionicons name={icon} size={18} color={c} style={{ marginRight: 8 }} />}
       <T w="semibold" size={14} color={c}>

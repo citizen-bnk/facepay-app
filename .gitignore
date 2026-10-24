@@ -9,3 +9,6 @@ web-build/
 shots/
 
 .vercel/
+
+/android/
+/ios/

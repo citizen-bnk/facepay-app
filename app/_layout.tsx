@@ -1,5 +1,6 @@
+import '../src/residence';
 import React, { useEffect } from 'react';
-import { Platform, View } from 'react-native';
+import { View } from 'react-native';
 import { Stack, useRouter, useSegments } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
 import * as SplashScreen from 'expo-splash-screen';
@@ -48,11 +49,10 @@ export default function RootLayout() {
   return (
     <SafeAreaProvider>
       <AppProvider>
-        <View style={{ flex: 1, backgroundColor: Platform.OS === 'web' ? '#F8F6EE' : colors.black }}>
+        <View style={{ flex: 1, backgroundColor: colors.black }}>
           <View
             style={[
               { flex: 1, width: '100%', backgroundColor: colors.bg },
-              Platform.OS === 'web' ? { maxWidth: 420, alignSelf: 'center', overflow:'hidden', borderRadius:28, borderWidth:3, borderColor:'#22282D', boxShadow:'0 14px 48px rgba(25,20,9,.18)' } : null,
             ]}
           >
             <StatusBar style="light" />

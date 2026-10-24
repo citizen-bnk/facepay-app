@@ -1,8 +1,9 @@
 import type { ExpoConfig } from 'expo/config';
 
 const config: ExpoConfig = {
-  name: 'FacePay',
-  slug: 'facepay',
+  name: 'FACEPAY',
+  owner: 'xtracash',
+  slug: 'facepay-app-live',
   scheme: 'facepay',
   version: '1.0.0',
   orientation: 'portrait',
@@ -40,6 +41,16 @@ const config: ExpoConfig = {
     'expo-font',
     ['expo-splash-screen', { image: './assets/facepay_mark.png', imageWidth: 200, resizeMode: 'contain', backgroundColor: '#0B0B0B' }],
     'expo-secure-store',
+    './plugins/withDeviceLocation.cjs',
+    'expo-background-task',
+    ['expo-notifications', { color: '#D4AF37' }],
+    ['expo-location', {
+      locationWhenInUsePermission: 'With your consent, FACEPAY records one home-location check per day for 15 days. No continuous route tracking.',
+      locationAlwaysAndWhenInUsePermission: 'Allow optional daily background home checks during your chosen window. You can stop and delete the 15-day check at any time.',
+      isIosBackgroundLocationEnabled: true,
+      isAndroidBackgroundLocationEnabled: true,
+      isAndroidForegroundServiceEnabled: false,
+    }],
     [
       'expo-camera',
       {
@@ -51,7 +62,9 @@ const config: ExpoConfig = {
   ],
   experiments: { typedRoutes: false },
   extra: {
+    eas: { projectId: '337c9782-6c11-4499-adf8-23b17b6e7003' },
     apiUrl: process.env.EXPO_PUBLIC_API_URL ?? null,
+    releaseChannel: process.env.FACEPAY_STORE || 'preview',
   },
 };
 

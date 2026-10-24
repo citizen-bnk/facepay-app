@@ -3,6 +3,8 @@ import { ScrollView, Switch, View } from 'react-native';
 import { useRouter } from 'expo-router';
 import { useApp } from '../../src/state/app';
 import { isLive } from '../../src/api/client';
+import { mobileRequest, mobileToken } from '../../src/mobile-api';
+import { stopResidenceSchedule } from '../../src/residence';
 import { colors } from '../../src/theme';
 import { Card, ListRow, OutlineButton, Screen, T } from '../../src/ui/kit';
 
@@ -11,6 +13,9 @@ export default function Profile() {
   const { name, phone, biometricConsent, grantConsent, revokeConsent, pinHash, signOut } = useApp();
   const [notif, setNotif] = useState(true);
   const [confirmRevoke, setConfirmRevoke] = useState(false);
+  const [confirmDelete, setConfirmDelete] = useState(false);
+  const [deleting, setDeleting] = useState(false);
+  const [deleteError, setDeleteError] = useState('');
 
   return (
     <Screen padBottom={false}>
@@ -78,6 +83,7 @@ export default function Profile() {
             sub={pinHash ? 'Change your 4-digit PIN' : 'Not set. Create one to pay without Face Pay.'}
             onPress={() => router.push({ pathname: '/pin', params: { mode: 'setup', next: '/(tabs)/profile' } })}
           />
+          <ListRow icon="location-outline" label="Proof of residence" sub="15-day consent-based home check" onPress={() => router.push('/residence')} />
           <ListRow icon="shield-checkmark-outline" label="Security" sub="Device and sign-in protection" last />
         </Card>
 
@@ -97,6 +103,23 @@ export default function Profile() {
         </Card>
 
         <OutlineButton label="Log out" tone="danger" icon="log-out-outline" style={{ marginTop: 22 }} onPress={async () => { await signOut(); router.replace('/onboarding'); }} />
+        <OutlineButton label="Delete mobile account" tone="danger" style={{ marginTop: 12 }} onPress={() => setConfirmDelete(true)} />
+        {confirmDelete && <View style={{ marginTop: 16 }}>
+          <T size={13}>Delete your mobile account, residence address, location checks and sign-in sessions? This cannot be undone. Developer subscriptions are managed separately in the developer portal.</T>
+          {!!deleteError && <T size={12} color={colors.danger} style={{marginTop:8}}>{deleteError}</T>}
+          <View style={{flexDirection:'row',gap:10,marginTop:12}}>
+            <OutlineButton label="Keep account" disabled={deleting} style={{flex:1}} onPress={() => setConfirmDelete(false)}/>
+            <OutlineButton label={deleting ? 'Deleting...' : 'Delete permanently'} tone="danger" disabled={deleting} style={{flex:1}} onPress={async () => {
+              setDeleting(true); setDeleteError('');
+              try {
+                await stopResidenceSchedule();
+                if (await mobileToken()) await mobileRequest('/account',{method:'DELETE'});
+                await signOut(); router.replace('/onboarding');
+              } catch(error) { setDeleteError(error instanceof Error ? error.message : 'Deletion failed. Please retry.'); }
+              finally { setDeleting(false); }
+            }}/>
+          </View>
+        </View>}
         <T size={10} color={colors.slate} style={{ textAlign: 'center', marginTop: 16 }}>
           FacePay v1.0.0 {'·'} {isLive ? 'Connected to FacePay API' : 'Demo mode (built-in sample data)'}
         </T>

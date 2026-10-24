@@ -8,7 +8,7 @@ import { GoldButton, Header, OutlineButton, Screen, T } from '../src/ui/kit';
 
 const POINTS: { icon: keyof typeof Ionicons.glyphMap; text: string }[] = [
   { icon: 'scan', text: 'A short liveness check confirms you are present when you choose to pay with your face.' },
-  { icon: 'phone-portrait', text: 'The check runs through a certified provider. FacePay never stores or uploads photos or face data from this app.' },
+  { icon: 'phone-portrait', text: 'This testing build uses simulated verification. No live certified biometric provider is connected. FacePay does not upload face photos from this app.' },
   { icon: 'hand-left', text: 'You can pay with a PIN instead at any time. Face Pay is optional.' },
   { icon: 'ban', text: 'Revoke this consent whenever you like in Profile > Biometric consent.' },
 ];

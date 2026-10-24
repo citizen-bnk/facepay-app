@@ -1,20 +1,72 @@
 {
-  "cli": { "version": ">= 12.0.0", "appVersionSource": "remote" },
+  "cli": {
+    "version": ">= 16.0.0",
+    "appVersionSource": "remote"
+  },
   "build": {
-    "development": {
-      "developmentClient": true,
-      "distribution": "internal",
-      "env": { "EXPO_PUBLIC_API_URL": "" }
-    },
     "preview": {
       "distribution": "internal",
-      "android": { "buildType": "apk" },
-      "env": { "EXPO_PUBLIC_API_URL": "https://api.facepay.com" }
+      "android": {
+        "buildType": "apk"
+      },
+      "env": {
+        "EXPO_PUBLIC_DEMO_MODE": "true",
+        "EXPO_PUBLIC_MOBILE_API_URL": "https://facepay-core.vercel.app",
+        "FACEPAY_STORE": "preview"
+      }
     },
-    "production": {
+    "native-test": {
+      "distribution": "internal",
+      "android": {
+        "buildType": "apk"
+      },
+      "env": {
+        "EXPO_PUBLIC_DEMO_MODE": "false",
+        "EXPO_PUBLIC_MOBILE_API_URL": "https://facepay-core.vercel.app",
+        "FACEPAY_STORE": "internal-test"
+      }
+    },
+    "apple": {
+      "distribution": "store",
       "autoIncrement": true,
-      "env": { "EXPO_PUBLIC_API_URL": "https://api.facepay.com" }
+      "env": {
+        "EXPO_PUBLIC_DEMO_MODE": "false",
+        "EXPO_PUBLIC_MOBILE_API_URL": "https://facepay-core.vercel.app",
+        "FACEPAY_STORE": "apple"
+      }
+    },
+    "google": {
+      "distribution": "store",
+      "autoIncrement": true,
+      "android": {
+        "buildType": "app-bundle"
+      },
+      "env": {
+        "EXPO_PUBLIC_DEMO_MODE": "false",
+        "EXPO_PUBLIC_MOBILE_API_URL": "https://facepay-core.vercel.app",
+        "FACEPAY_STORE": "google"
+      }
+    },
+    "huawei": {
+      "distribution": "store",
+      "autoIncrement": true,
+      "android": {
+        "buildType": "apk"
+      },
+      "env": {
+        "EXPO_PUBLIC_DEMO_MODE": "false",
+        "EXPO_PUBLIC_MOBILE_API_URL": "https://facepay-core.vercel.app",
+        "FACEPAY_STORE": "huawei"
+      }
     }
   },
-  "submit": { "production": {} }
+  "submit": {
+    "apple": {},
+    "google": {
+      "android": {
+        "track": "internal",
+        "releaseStatus": "draft"
+      }
+    }
+  }
 }

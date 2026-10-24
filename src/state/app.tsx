@@ -1,3 +1,5 @@
+import { stopResidenceSchedule } from '../residence';
+import { mobileToken, clearMobileToken, mobileRequest } from '../mobile-api';
 import React, { createContext, useCallback, useContext, useEffect, useMemo, useRef, useState } from 'react';
 import * as Crypto from 'expo-crypto';
 import { api } from '../api/client';
@@ -101,10 +103,14 @@ export function AppProvider({ children }: { children: React.ReactNode }) {
       walletVersion,
       bumpWallet: () => setWalletVersion((v) => v + 1),
       async signIn(phone) {
-        const r = await api.login().catch(() => null);
-        update({ signedIn: true, phone, name: r?.user.name?.split(' ')[0] || 'Thabo' });
+        const token = await mobileToken();
+        const r = token ? null : await api.login().catch(() => null);
+        update({ signedIn: true, phone, name: token ? 'FacePay member' : r?.user.name?.split(' ')[0] || 'Thabo' });
       },
       async signOut() {
+        await stopResidenceSchedule();
+        await mobileRequest('/session',{method:'DELETE'}).catch(() => undefined);
+        await clearMobileToken();
         setDraft(null);
         await removeItem(KEY);
         pRef.current = EMPTY;
