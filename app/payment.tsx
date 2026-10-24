@@ -2,6 +2,7 @@ import React, { useCallback, useEffect, useReducer, useRef } from 'react';
 import { ActivityIndicator, View } from 'react-native';
 import { useRouter } from 'expo-router';
 import { Ionicons } from '@expo/vector-icons';
+import { PaymentResultAnimation } from '../src/ui/PaymentResultAnimation';
 import { api } from '../src/api/client';
 import { useApp } from '../src/state/app';
 import {
@@ -80,9 +81,7 @@ export default function Payment() {
         )}
         {phase === 'success' && (
           <View testID="phase-success" style={{ alignItems: 'center', width: '100%' }}>
-            <View style={{ width: 96, height: 96, borderRadius: 48, borderWidth: 3, borderColor: colors.gold, alignItems: 'center', justifyContent: 'center' }}>
-              <Ionicons name="checkmark" size={52} color={colors.gold} />
-            </View>
+            <PaymentResultAnimation success />
             <T w="bold" size={36} style={{ marginTop: 24 }}>
               {formatZAR(draft.amountMinor)}
             </T>
@@ -128,9 +127,7 @@ export default function Payment() {
         )}
         {phase === 'failed' && (
           <View testID="phase-failed" style={{ alignItems: 'center' }}>
-            <View style={{ width: 96, height: 96, borderRadius: 48, borderWidth: 3, borderColor: colors.danger, alignItems: 'center', justifyContent: 'center' }}>
-              <Ionicons name="close" size={52} color={colors.danger} />
-            </View>
+            <PaymentResultAnimation success={false} />
             <T w="bold" size={22} style={{ marginTop: 24 }}>
               Payment failed
             </T>
